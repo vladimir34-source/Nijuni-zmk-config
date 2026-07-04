@@ -28,19 +28,84 @@
     combos {
         compatible = "zmk,combos";
 
-        ESCape {
-            bindings = <&kp ESCAPE>;
-            key-positions = <1 2>;
+        ParaLeft {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <6 5>;
         };
 
-        BSP {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <11 12>;
+        ParaRight {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <7 8>;
         };
 
-        TABul {
-            bindings = <&kp TAB>;
-            key-positions = <14 15>;
+        BrakLeft {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <18 19>;
+        };
+
+        BrakRight {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <20 21>;
+        };
+
+        BraceLeft {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <30 31>;
+        };
+
+        BraceRight {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <32 33>;
+        };
+
+        DoubleQuote {
+            bindings = <&kp DOUBLE_QUOTES>;
+            key-positions = <18 17>;
+        };
+
+        SingleQuote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <21 22>;
+        };
+
+        TildaSign {
+            bindings = <&kp TILDE>;
+            key-positions = <14 1>;
+        };
+
+        GraveSigh {
+            bindings = <&kp GRAVE>;
+            key-positions = <26 14>;
+        };
+
+        MinusSign {
+            bindings = <&kp MINUS>;
+            key-positions = <4 5>;
+        };
+
+        PlusSign {
+            bindings = <&kp PLUS>;
+            key-positions = <4 3>;
+        };
+
+        UnderscoreSign {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <8 9>;
+        };
+
+        PipeSign {
+            bindings = <&kp PIPE>;
+            key-positions = <10 9>;
+        };
+
+        Mainbootleft {
+            bindings = <&bootloader>;
+            key-positions = <1 5>;
+        };
+
+        Mainbootright {
+            bindings = <&bootloader>;
+            key-positions = <8 12>;
         };
     };
 
@@ -78,6 +143,22 @@
             #binding-cells = <0>;
             bindings = <&lt 2 ESCAPE>, <&lang>;
         };
+
+        tdJ: tap_dance_lang2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&kp J>, <&kp LG(F12)>;
+
+            tapping-term-ms = <100>;
+        };
+
+        tdF: tap_dance_lang1 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&kp F>, <&kp LG(F11)>;
+
+            tapping-term-ms = <100>;
+        };
     };
 
     keymap {
@@ -93,10 +174,10 @@
             //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
 
             bindings = <
-&mt LEFT_GUI LG(LS(NUMBER_4))  &kp GRAVE     &lt 3 Q  &kp W  &kp E         &kp R           &kp T            &kp Y          &kp U           &kp I        &kp O    &lt 3 P   &kp LBKT       &mt RWIN RBKT
-                               &kp LEFT_ALT  &kp A    &kp S  &kp D         &kp F           &kp G            &kp H          &kp J           &kp K        &kp L    &kp SEMI  &mt RCTRL SQT
-                               &kp LCTRL     &kp Z    &kp X  &kp C         &kp V           &kp B            &kp N          &kp M           &kp COMMA    &kp DOT  &kp FSLH  &mt RALT BSLH
-                                                             &lt 2 ESCAPE  &kp LEFT_SHIFT  &lt LWR SPACE    &lt LWR ENTER  &mt RSHFT BSPC  &lt RSE DEL
+&mt LEFT_GUI LG(LS(NUMBER_4))  &kp ESC     &kp Q  &kp W  &kp E      &kp R  &kp T           &kp Y        &kp U          &kp I      &kp O    &kp P     &lt 3 LEFT_BRACKET  &mt RWIN RBKT
+                               &kp TAB     &kp A  &kp S  &kp D      &tdF   &kp G           &kp H        &tdJ           &kp K      &kp L    &kp SEMI  &kp SQT
+                               &kp LSHIFT  &kp Z  &kp X  &kp C      &kp V  &kp B           &kp N        &kp M          &kp COMMA  &kp DOT  &kp FSLH  &mt RALT BSLH
+                                                         &kp LCTRL  &mo 1  &mt LGUI RET    &lt 2 SPACE  &kp BACKSPACE  &kp DEL
             >;
         };
 
